@@ -3,7 +3,7 @@ import browser from "webextension-polyfill";
 import { notify } from "./notify";
 import { actionOpen, actionCopy } from "./actions";
 import { detectURL } from "./detection";
-import { Code, pakoSerde, fromCode, getSource } from "./serde";
+import { Code, pakoSerde, fromCode, asLiveState, getSource } from "./serde";
 
 browser.contextMenus.create({
   id: "edit-mermaid",
@@ -20,6 +20,12 @@ browser.contextMenus.create({
 browser.contextMenus.create({
   id: "edit-mermaid-open-current-mermaid.link",
   title: "Open with mermaid.link in current tab",
+  parentId: "edit-mermaid",
+});
+
+browser.contextMenus.create({
+  id: "edit-mermaid-copy-mermaid.link",
+  title: "Copy mermaid.link URL",
   parentId: "edit-mermaid",
 });
 
@@ -48,19 +54,31 @@ browser.contextMenus.onClicked.addListener(async (info, _) => {
   url ??= info.linkUrl;
   url ??= info.frameUrl;
   url ??= info.pageUrl;
+  console.debug(`Detected URL: ${url}`);
 
   if (info.menuItemId === "edit-mermaid-open-new-mermaid.link") {
     await handleEdit(url, {
       async action(code) {
-        const data = pakoSerde.serialize(fromCode(code));
+        const data = pakoSerde.serialize(fromCode(asLiveState(code)));
         await actionOpen(`https://mermaid.live/edit#pako:${data}`, "new");
       },
     });
   } else if (info.menuItemId === "edit-mermaid-open-current-mermaid.link") {
     await handleEdit(url, {
       async action(code) {
-        const data = pakoSerde.serialize(fromCode(code));
+        const data = pakoSerde.serialize(fromCode(asLiveState(code)));
         await actionOpen(`https://mermaid.live/edit#pako:${data}`, "current");
+      },
+    });
+  } else if (info.menuItemId === "edit-mermaid-copy-mermaid.link") {
+    await handleEdit(url, {
+      async action(code) {
+        const data = pakoSerde.serialize(fromCode(asLiveState(code)));
+        await actionCopy(
+          `https://mermaid.live/edit#pako:${data}`,
+          "copy-link-success",
+          "copy-fail"
+        );
       },
     });
   } else if (info.menuItemId === "edit-mermaid-copy-source") {
@@ -70,6 +88,8 @@ browser.contextMenus.onClicked.addListener(async (info, _) => {
         await actionCopy(source, "copy-code-success", "copy-fail");
       },
     });
+  } else {
+    console.error(`Unhandled menuItemId ${info.menuItemId}`);
   }
 });
 

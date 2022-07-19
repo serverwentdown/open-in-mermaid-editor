@@ -3,6 +3,7 @@ import browser from "webextension-polyfill";
 export type NotifyMessageKey =
   | "detect-fail"
   | "copy-code-success"
+  | "copy-link-success"
   | "copy-fail"
   | "current-tab-fail";
 
@@ -23,6 +24,10 @@ const notifyMessages: NotifyMessages = {
   "copy-code-success": {
     title: "Copied",
     message: "Mermaid code has been copied to your clipboard",
+  },
+  "copy-link-success": {
+    title: "Copied",
+    message: "Link has been copied to your clipboard",
   },
   "copy-fail": {
     title: "A fatal error occurred",

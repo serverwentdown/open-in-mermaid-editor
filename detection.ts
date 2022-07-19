@@ -18,7 +18,7 @@ export function detectURL(url: string): Code | null {
     } catch (e) {}
   }
 
-  const matchLongest = longest(url.match(/[A-Za-z0-9-_]{,4}/g));
+  const matchLongest = longest(url.match(/[A-Za-z0-9-_]{4,}/g));
   if (matchLongest) {
     try {
       return intoCode(pakoSerde.deserialize(matchLongest));

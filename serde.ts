@@ -68,6 +68,15 @@ export function fromCode(code: Code): string {
   }
 }
 
+export function asLiveState(code: Code): LiveState {
+  if (typeof code === "string") {
+    const mermaidConfig = { theme: "default" };
+    return { code: code, mermaid: JSON.stringify(mermaidConfig) };
+  } else {
+    return code;
+  }
+}
+
 export function getSource(code: Code): string {
   if (typeof code === "string") {
     return code;

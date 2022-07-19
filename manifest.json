@@ -1,5 +1,5 @@
 {
-  "description": "Open embedded diagrams in mermaid.live. Supports rendered diagrams on mermaid.ink and kroki.io.",
+  "description": "Open embedded diagrams in a Mermaid editor",
   "manifest_version": 2,
   "name": "Open in Mermaid editor",
   "icons": {
