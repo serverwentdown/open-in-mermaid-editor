@@ -1,0 +1,24 @@
+{
+  "name": "open-in-mermaid-editor",
+  "version": "1.0.0",
+  "description": "Open embedded diagrams in a Mermaid editor",
+  "author": "Ambrose Chua <ambrose@hey.com>",
+  "license": "MIT",
+  "scripts": {
+    "watch": "parcel watch manifest.json --config @parcel/config-webextension",
+    "build": "parcel build manifest.json --config @parcel/config-webextension",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "@parcel/config-webextension": "^2.6.2",
+    "@types/pako": "^2.0.0",
+    "@types/webextension-polyfill": "^0.9.0",
+    "buffer": "^6.0.3",
+    "js-base64": "^3.7.2",
+    "pako": "^2.0.4",
+    "parcel": "^2.6.2",
+    "prettier": "^2.7.1",
+    "typescript": "^4.7.4",
+    "webextension-polyfill": "^0.9.0"
+  }
+}
