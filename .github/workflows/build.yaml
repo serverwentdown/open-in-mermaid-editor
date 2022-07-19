@@ -5,7 +5,7 @@ on:
     branches: [main]
 
 jobs:
-  dist:
+  firefox:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -15,10 +15,26 @@ jobs:
           cache: 'npm'
           cache-dependency-path: '**/package-lock.json'
       - run: npm ci --prefer-offline --no-audit
-      - run: npm run build
+      - run: npm run build-firefox
       - uses: actions/upload-artifact@v2
         with:
-          name: dist
+          name: dist-firefox
+          path: dist/
+          if-no-files-found: error
+  chrome:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
+      - run: npm ci --prefer-offline --no-audit
+      - run: npm run build-chrome
+      - uses: actions/upload-artifact@v2
+        with:
+          name: dist-chrome
           path: dist/
           if-no-files-found: error
 

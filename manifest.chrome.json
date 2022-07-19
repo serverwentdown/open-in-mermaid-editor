@@ -1,0 +1,16 @@
+{
+  "description": "Open embedded diagrams in a Mermaid editor",
+  "manifest_version": 3,
+  "name": "Open in Mermaid editor",
+  "icons": {
+    "16": "icon_16.png",
+    "48": "icon_48.png",
+    "128": "icon_128.png"
+  },
+  "background": {
+    "service_worker": "open-in-mermaid-editor.ts",
+	"type": "module"
+  },
+  "permissions": ["contextMenus", "notifications", "clipboardWrite"],
+  "version": "4"
+}
