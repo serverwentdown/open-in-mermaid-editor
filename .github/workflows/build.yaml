@@ -5,8 +5,11 @@ on:
     branches: [main]
 
 jobs:
-  firefox:
+  dist:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        browser: [firefox, chrome]
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -15,26 +18,9 @@ jobs:
           cache: "npm"
           cache-dependency-path: "**/package-lock.json"
       - run: npm ci --prefer-offline --no-audit
-      - run: npm run build-firefox
+      - run: npm run build-${{ matrix.browser }}
       - uses: actions/upload-artifact@v2
         with:
-          name: dist-firefox
+          name: dist-${{ matrix.browser }}
           path: dist/
           if-no-files-found: error
-  chrome:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          cache: "npm"
-          cache-dependency-path: "**/package-lock.json"
-      - run: npm ci --prefer-offline --no-audit
-      - run: npm run build-chrome
-      - uses: actions/upload-artifact@v2
-        with:
-          name: dist-chrome
-          path: dist/
-          if-no-files-found: error
-# vim: set et ts=2 sw=2:
