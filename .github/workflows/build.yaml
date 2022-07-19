@@ -12,8 +12,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: 'npm'
-          cache-dependency-path: '**/package-lock.json'
+          cache: "npm"
+          cache-dependency-path: "**/package-lock.json"
       - run: npm ci --prefer-offline --no-audit
       - run: npm run build-firefox
       - uses: actions/upload-artifact@v2
@@ -28,8 +28,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: 'npm'
-          cache-dependency-path: '**/package-lock.json'
+          cache: "npm"
+          cache-dependency-path: "**/package-lock.json"
       - run: npm ci --prefer-offline --no-audit
       - run: npm run build-chrome
       - uses: actions/upload-artifact@v2
@@ -37,5 +37,4 @@ jobs:
           name: dist-chrome
           path: dist/
           if-no-files-found: error
-
 # vim: set et ts=2 sw=2:

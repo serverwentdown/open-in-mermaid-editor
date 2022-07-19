@@ -31,7 +31,7 @@ const notifyMessages: NotifyMessages = {
   },
   "copy-fail": {
     title: "A fatal error occurred",
-    message: "Failed to copy code to clipboard",
+    message: "Failed to copy to clipboard",
   },
   "current-tab-fail": {
     title: "Cannot find current tab",
@@ -39,11 +39,21 @@ const notifyMessages: NotifyMessages = {
   },
 };
 
-export async function notify(key: NotifyMessageKey) {
+interface NotifyOptions {
+  error?: Error | string;
+}
+
+export async function notify(key: NotifyMessageKey, options?: NotifyOptions) {
   const message = notifyMessages[key];
+  let finalTitle = message.title;
+  let finalMessage = message.message;
+  if (options?.error) {
+    finalMessage += ": " + options.error.toString();
+  }
   await browser.notifications.create(key, {
     type: "basic",
-    title: message.title,
-    message: message.message,
+    iconUrl: new URL("icon_48.png", import.meta.url).toString(),
+    title: finalTitle,
+    message: finalMessage,
   });
 }

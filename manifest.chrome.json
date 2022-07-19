@@ -9,8 +9,8 @@
   },
   "background": {
     "service_worker": "open-in-mermaid-editor.ts",
-	"type": "module"
+    "type": "module"
   },
-  "permissions": ["contextMenus", "notifications", "clipboardWrite"],
+  "permissions": ["contextMenus", "notifications"],
   "version": "4"
 }

@@ -9,8 +9,8 @@
     "build": "parcel build manifest.json --config @parcel/config-webextension",
     "build-firefox": "npm run setup-firefox && npm run build",
     "build-chrome": "npm run setup-chrome&& npm run build",
-	"setup-firefox": "cp manifest.firefox.json manifest.json",
-	"setup-chrome": "cp manifest.chrome.json manifest.json",
+    "setup-firefox": "cp manifest.firefox.json manifest.json",
+    "setup-chrome": "cp manifest.chrome.json manifest.json",
     "format": "prettier --write ."
   },
   "devDependencies": {

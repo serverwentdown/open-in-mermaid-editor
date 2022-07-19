@@ -23,17 +23,19 @@ browser.contextMenus.create({
   parentId: "edit-mermaid",
 });
 
-browser.contextMenus.create({
-  id: "edit-mermaid-copy-mermaid.link",
-  title: "Copy mermaid.link URL",
-  parentId: "edit-mermaid",
-});
+if (navigator.clipboard?.writeText !== undefined) {
+  browser.contextMenus.create({
+    id: "edit-mermaid-copy-mermaid.link",
+    title: "Copy mermaid.link URL",
+    parentId: "edit-mermaid",
+  });
 
-browser.contextMenus.create({
-  id: "edit-mermaid-copy-source",
-  title: "Copy Source",
-  parentId: "edit-mermaid",
-});
+  browser.contextMenus.create({
+    id: "edit-mermaid-copy-source",
+    title: "Copy Source",
+    parentId: "edit-mermaid",
+  });
+}
 
 interface HandleEditOptions {
   action(code: Code): Promise<void>;
@@ -60,25 +62,24 @@ browser.contextMenus.onClicked.addListener(async (info, _) => {
     await handleEdit(url, {
       async action(code) {
         const data = pakoSerde.serialize(fromCode(asLiveState(code)));
-        await actionOpen(`https://mermaid.live/edit#pako:${data}`, "new");
+        const url = `https://mermaid.live/edit#pako:${data}`;
+        await actionOpen(url, "new");
       },
     });
   } else if (info.menuItemId === "edit-mermaid-open-current-mermaid.link") {
     await handleEdit(url, {
       async action(code) {
         const data = pakoSerde.serialize(fromCode(asLiveState(code)));
-        await actionOpen(`https://mermaid.live/edit#pako:${data}`, "current");
+        const url = `https://mermaid.live/edit#pako:${data}`;
+        await actionOpen(url, "current");
       },
     });
   } else if (info.menuItemId === "edit-mermaid-copy-mermaid.link") {
     await handleEdit(url, {
       async action(code) {
         const data = pakoSerde.serialize(fromCode(asLiveState(code)));
-        await actionCopy(
-          `https://mermaid.live/edit#pako:${data}`,
-          "copy-link-success",
-          "copy-fail"
-        );
+        const url = `https://mermaid.live/edit#pako:${data}`;
+        await actionCopy(url, "copy-link-success", "copy-fail");
       },
     });
   } else if (info.menuItemId === "edit-mermaid-copy-source") {
