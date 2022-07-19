@@ -12,5 +12,5 @@
     "type": "module"
   },
   "permissions": ["contextMenus", "notifications"],
-  "version": "4"
+  "version": "5"
 }
