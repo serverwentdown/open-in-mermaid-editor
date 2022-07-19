@@ -13,13 +13,13 @@ browser.contextMenus.create({
 
 browser.contextMenus.create({
   id: "edit-mermaid-open-new-mermaid.link",
-  title: "Open with mermaid.link in new tab",
+  title: "Open with mermaid.link in New Tab",
   parentId: "edit-mermaid",
 });
 
 browser.contextMenus.create({
   id: "edit-mermaid-open-current-mermaid.link",
-  title: "Open with mermaid.link in current tab",
+  title: "Open with mermaid.link in Current Tab",
   parentId: "edit-mermaid",
 });
 
