@@ -15,6 +15,7 @@
 ## Usage
 
 - Right-click on a diagram
+  - [Sample link](https://mermaid.ink/svg/pako:eNpVkEFPg0AQhf_KZk-atMWC0paDiaW1lyaa2FvpYcoO7EbY3SyDpgH-u0uNRuc0mfe9l8nreG4E8oSXDqxkh02mmZ-nYyqdaqiG5sSm08d-h8Rqo_HSs_XNzrBGGmuVLm-_-fUIsbTbjxgykkq_D99SevW_aOzZ5rgHS8ae_iqHT9Oz7VG9Sh__X5EOvev5WEBSwDQHx1JwJz7hNboalPBvd6Mh4ySxxownfhVYQFtRxjM9eLS1Agi3QpFx3MdUDU44tGTeLjrnCbkWf6CNAt9C_UtVBgR6U8fpYq8d-UZ8ZG50ocrx3rrKnyWRbZIgGOVZqUi251lu6qBRQoIj-bGKgziMlxBGGC8ieIgikZ_nq2UR3s8Lsbibh8CHYfgCSSN_6A)
 - Select "Edit Mermaid"
 - Choose the online editor or copy the code to your clipboard
 
