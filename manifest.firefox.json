@@ -11,5 +11,5 @@
     "scripts": ["open-in-mermaid-editor.ts"]
   },
   "permissions": ["contextMenus", "notifications", "clipboardWrite"],
-  "version": "5"
+  "version": "6"
 }

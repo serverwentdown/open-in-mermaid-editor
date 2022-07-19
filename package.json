@@ -5,16 +5,18 @@
   "author": "Ambrose Chua <ambrose@hey.com>",
   "license": "MIT",
   "scripts": {
-    "watch": "parcel watch manifest.json --config @parcel/config-webextension",
-    "build": "parcel build manifest.json --config @parcel/config-webextension",
+    "watch": "parcel watch manifest.json",
+    "build": "parcel build manifest.json --no-source-maps",
     "build-firefox": "npm run setup-firefox && npm run build",
     "build-chrome": "npm run setup-chrome&& npm run build",
     "setup-firefox": "cp manifest.firefox.json manifest.json",
     "setup-chrome": "cp manifest.chrome.json manifest.json",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "check": "tsc --noEmit"
   },
   "devDependencies": {
     "@parcel/config-webextension": "^2.6.2",
+    "@parcel/reporter-bundle-analyzer": "^2.6.2",
     "@types/pako": "^2.0.0",
     "@types/webextension-polyfill": "^0.9.0",
     "buffer": "^6.0.3",

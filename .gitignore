@@ -1,5 +1,6 @@
 node_modules/
 
 dist/
+parcel-bundle-reports/
 .parcel-cache/
 manifest.json
