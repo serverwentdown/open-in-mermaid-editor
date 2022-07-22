@@ -12,21 +12,21 @@ browser.contextMenus.create({
 });
 
 browser.contextMenus.create({
-  id: "edit-mermaid-open-new-mermaid.link",
-  title: "Open with mermaid.link in New Tab",
+  id: "edit-mermaid-open-new-mermaid.live",
+  title: "Open with mermaid.live in New Tab",
   parentId: "edit-mermaid",
 });
 
 browser.contextMenus.create({
-  id: "edit-mermaid-open-current-mermaid.link",
-  title: "Open with mermaid.link in Current Tab",
+  id: "edit-mermaid-open-current-mermaid.live",
+  title: "Open with mermaid.live in Current Tab",
   parentId: "edit-mermaid",
 });
 
 if (navigator.clipboard?.writeText !== undefined) {
   browser.contextMenus.create({
-    id: "edit-mermaid-copy-mermaid.link",
-    title: "Copy mermaid.link URL",
+    id: "edit-mermaid-copy-mermaid.live",
+    title: "Copy mermaid.live URL",
     parentId: "edit-mermaid",
   });
 
@@ -58,7 +58,7 @@ browser.contextMenus.onClicked.addListener(async (info, _) => {
   url ??= info.pageUrl;
   console.debug(`Detected URL: ${url}`);
 
-  if (info.menuItemId === "edit-mermaid-open-new-mermaid.link") {
+  if (info.menuItemId === "edit-mermaid-open-new-mermaid.live") {
     await handleEdit(url, {
       async action(code) {
         const data = pakoSerde.serialize(fromCode(asLiveState(code)));
@@ -66,7 +66,7 @@ browser.contextMenus.onClicked.addListener(async (info, _) => {
         await actionOpen(url, "new");
       },
     });
-  } else if (info.menuItemId === "edit-mermaid-open-current-mermaid.link") {
+  } else if (info.menuItemId === "edit-mermaid-open-current-mermaid.live") {
     await handleEdit(url, {
       async action(code) {
         const data = pakoSerde.serialize(fromCode(asLiveState(code)));
@@ -74,7 +74,7 @@ browser.contextMenus.onClicked.addListener(async (info, _) => {
         await actionOpen(url, "current");
       },
     });
-  } else if (info.menuItemId === "edit-mermaid-copy-mermaid.link") {
+  } else if (info.menuItemId === "edit-mermaid-copy-mermaid.live") {
     await handleEdit(url, {
       async action(code) {
         const data = pakoSerde.serialize(fromCode(asLiveState(code)));
