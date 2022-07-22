@@ -12,6 +12,9 @@
 
 ---
 
+[![](https://storage.googleapis.com/web-dev-uploads/image/WlD8wC6g8khYWPJUsQceQkhXSlv1/UV4C4ybeBTsZt43U4xis.png)](https://chrome.google.com/webstore/detail/open-in-mermaid-editor/pljeapndbpclcpihiaojeegjkcpnekep)
+[![](https://ffp4g1ylyit3jdyti1hqcvtb-wpengine.netdna-ssl.com/addons/files/2015/11/get-the-addon.png)](https://addons.mozilla.org/en-GB/firefox/addon/open-in-mermaid-editor/)
+
 ## Usage
 
 - Right-click on a diagram
